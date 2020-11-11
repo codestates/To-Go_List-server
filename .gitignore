@@ -108,7 +108,7 @@ typings/
 
 # dotenv environment variables file
 .env
-
+config/
 
 ### Windows ###
 # Windows thumbnail cache files

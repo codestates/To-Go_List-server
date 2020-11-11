@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "migrate": "npx sequelize-cli db:migrate",
+    "undo-migrate": "npx sequelize-cli db:migrate:undo",
     "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "docker-build": "docker build -t togo-server .",
@@ -25,6 +26,7 @@
     "crypto": "^1.0.1",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "mysql2": "^2.2.5",
     "pm2": "^4.5.0",
     "sequelize": "^6.3.5"
   },
