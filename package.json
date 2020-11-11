@@ -1,0 +1,35 @@
+{
+  "name": "im23project2-server",
+  "version": "1.0.0",
+  "description": "ToGoList server",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "npx sequelize-cli db:migrate",
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/astartes22/im23project2-server.git"
+  },
+  "author": "astartes22",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/astartes22/im23project2-server/issues"
+  },
+  "homepage": "https://github.com/astartes22/im23project2-server#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "pm2": "^4.5.0",
+    "sequelize": "^6.3.5"
+  },
+  "devDependencies": {
+    "eslint": "^7.13.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.6",
+    "sequelize-cli": "^6.2.0"
+  }
+}
