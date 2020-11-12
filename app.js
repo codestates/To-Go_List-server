@@ -3,7 +3,7 @@ const cors = require('cors');
 const session = require('express-session');
 
 const userRouter = require('./routes/users');
-// const postRouter = require('./routes/posts');
+const postRouter = require('./routes/posts');
 // const hashtagRouter = require('./routes/hashtags');
 
 const morgan = require('morgan');
@@ -33,7 +33,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/user', userRouter);
-// app.use('/post', postRouter);
+app.use('/post', postRouter);
 // app.use('/hashtag', hashtagRouter);
 
 app.listen(port, () => {
