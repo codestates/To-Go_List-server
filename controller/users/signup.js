@@ -20,9 +20,6 @@ module.exports = {
                 const data = await user.get({ plain: true });
                 res.status(201).json(data);
             })
-            .catch(err => {
-                console.log(err);
-                res.sendStats(500);
-            })
+            .catch(err => res.status(500).send(err));
     }
 };

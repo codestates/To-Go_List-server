@@ -32,6 +32,13 @@ module.exports = (sequelize, DataTypes) => {
           shasum.update(data.where.password);
           data.where.password = shasum.digest('hex');
         };
+      },
+      beforeBulkUpdate: data => {
+        if (data.attributes.password) {
+          let shasum = crypto.createHmac('sha512', 'to-go-SecRet!$');
+          shasum.update(data.attributes.password);
+          data.attributes.password = shasum.digest('hex');
+        };
       }
     }, sequelize
   }, {

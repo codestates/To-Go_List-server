@@ -1,0 +1,21 @@
+const { user } = require('../../models');
+
+module.exports = {
+    post: (req, res) => {
+        const { email, password } = req.body;
+
+        user.findOne({
+            where: {
+                email: email,
+                password: password
+            }
+        }).then(result => {
+            if (result === null) {
+                res.status(401).send('Invalid user');
+            } else {
+                req.session.userid = result.id;
+                res.status(200).send('success');
+            }
+        }).catch(err => res.status(500).send(err));
+    }
+};
