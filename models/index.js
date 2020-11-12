@@ -38,6 +38,7 @@ const { user, post, post_hashtag, hashtag } = sequelize.models;
 // user-post associations
 user.hasMany(post);
 post.belongsTo(user);
+
 // post-hashtag associations
 post.belongsToMany(hashtag, { through: post_hashtag });
 hashtag.belongsToMany(post, { through: post_hashtag });
