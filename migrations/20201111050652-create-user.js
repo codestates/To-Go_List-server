@@ -20,6 +20,12 @@ module.exports = {
       phonenum: {
         type: Sequelize.STRING
       },
+      googleId: {
+        type: Sequelize.STRING
+      },
+      token: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
