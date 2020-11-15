@@ -2,9 +2,13 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('post_hashtags', {
-      id: {
+      postid: {
         allowNull: false,
-        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER
+      },
+      hashtagid: {
+        allowNull: false,
         primaryKey: true,
         type: Sequelize.INTEGER
       },

@@ -40,7 +40,24 @@ user.hasMany(post);
 post.belongsTo(user);
 
 // post-hashtag associations
-post.belongsToMany(hashtag, { through: post_hashtag });
-hashtag.belongsToMany(post, { through: post_hashtag });
+post.belongsToMany(hashtag, {
+  through: post_hashtag,
+  foreignKey: 'postid'
+});
+hashtag.belongsToMany(post, {
+  through: post_hashtag,
+  foreignKey: 'hashtagid'
+});
+
+post_hashtag.belongsTo(post, {
+  foreignKey: 'postid'
+});
+post_hashtag.belongsTo(hashtag, {
+  foreignKey: 'hashtagid'
+});
+
+// user-hashtag associations
+// user.hasMany(hashtag);
+// hashtag.belongsTo(user);
 
 module.exports = db;
