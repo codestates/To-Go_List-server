@@ -33,6 +33,8 @@ module.exports = {
                 email
             }, 'testSecret');
 
+            console.log(sub);
+
             user.create({
                 googleId: sub,
                 email: email,
