@@ -1,12 +1,12 @@
 const { post } = require('../../models');
 
 module.exports = {
-    post: (req, res) => {
+    post: async (req, res) => {
         const { userid } = req.session;
         const { location, mapimgpath, content } = req.body;
 
         if (userid) {
-            post.create({
+            await post.create({
                 location: location,
                 mapimgpath: mapimgpath,
                 content: content,

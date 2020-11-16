@@ -18,7 +18,9 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     username: DataTypes.STRING,
-    phonenum: DataTypes.STRING
+    phonenum: DataTypes.STRING,
+    googleId: DataTypes.STRING,
+    token: DataTypes.STRING
   }, {
     hooks: {
       beforeCreate: data => {
@@ -29,7 +31,8 @@ module.exports = (sequelize, DataTypes) => {
         }
       },
       beforeFind: data => {
-        if (Object.keys(data).indexOf('where') !== -1) {
+        // if (Object.keys(data).indexOf('where') !== -1) {
+        if (data.where.password) {
           let shasum = crypto.createHmac('sha512', 'to-go-SecRet!$');
           shasum.update(data.where.password);
           data.where.password = shasum.digest('hex');

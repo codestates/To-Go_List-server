@@ -1,13 +1,17 @@
-const { post } = require('../../models');
+const { post, hashtag } = require('../../models');
 
 module.exports = {
-    get: (req, res) => {
+    get: async (req, res) => {
         const { userid } = req.session;
 
         if (userid) {
-            post.findAll({
+            await post.findAll({
                 where: {
                     userid: userid
+                },
+                include: {
+                    model: hashtag,
+                    through: { attributes: [] }
                 }
             }).then(result => res.status(200).json(result))
                 .catch(err => res.status(500).send(err));
