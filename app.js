@@ -22,7 +22,10 @@ app.use(
 app.use(express.json());
 app.use(
     cors({
-        origin: ['http://localhost:3000', 'http://localhost:3001'],
+        origin: [
+            'http://localhost:3000',
+            'http://localhost:3001',
+            'http://to-go-list-client.s3-website.ap-northeast-2.amazonaws.com'],
         methods: ['GET', 'POST', 'PATCH'],
         credentials: true
     })
