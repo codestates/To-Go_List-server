@@ -1,12 +1,12 @@
 const { post } = require('../../models');
 
 module.exports = {
-    patch: (req, res) => {
+    patch: async (req, res) => {
         const { userid } = req.session;
         const { id, location, mapimgpath, content } = req.body;
 
         if (userid) {
-            post.update({
+            await post.update({
                 location: location,
                 mapimgpath: mapimgpath,
                 content: content
