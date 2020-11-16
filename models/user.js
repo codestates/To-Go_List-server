@@ -18,7 +18,9 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     username: DataTypes.STRING,
-    phonenum: DataTypes.STRING
+    phonenum: DataTypes.STRING,
+    googleId: DataTypes.STRING,
+    token: DataTypes.STRING
   }, {
     hooks: {
       beforeCreate: data => {
