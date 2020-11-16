@@ -5,5 +5,6 @@ module.exports = {
     signin: require('./signin'),
     signout: require('./signout'),
     signup: require('./signup'),
-    remove: require('./remove')
+    remove: require('./remove'),
+    google: require('./google')
 };
