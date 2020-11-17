@@ -18,7 +18,7 @@ module.exports = {
                 token: token
             }, {
                 where: {
-                    googleId: sub
+                    email: email
                 }
             }).catch(err => console.log(err));
 
@@ -32,8 +32,6 @@ module.exports = {
                 name,
                 email
             }, 'testSecret');
-
-            console.log(sub);
 
             user.create({
                 googleId: sub,
@@ -50,29 +48,30 @@ module.exports = {
                 idToken: req.body.tokenId
             });
             const payload = ticket.getPayload();
-            const googleId = payload['sub'];
+            const email = payload['email'];
 
             user.findOne({
-                attributes: ['token']
-            }, {
+                attributes: ['token', 'id'],
+                hooks: false,
                 where: {
-                    googleId: googleId
+                    email: email
                 }
             }).then(result => {
                 let token = '';
-                console.log(result);
-                if (result.length > 0) {
-                    console.log('DB에 있는 유저');
+
+                if (result !== null) {
+                    // console.log('DB에 있는 유저');
                     token = updateToken(payload);
                 } else {
-                    console.log('DB에 없는 유저');
+                    // console.log('DB에 없는 유저');
                     token = insertUserIntoDB(payload);
                 }
-                res.send({ token });
+                req.session.userid = result.id;
+                res.status(200).json({ token, id: req.session.userid });
             }).catch(err => console.log(err));
         };
 
-        verify().then(() => { }).catch(console.error);
+        verify().then(() => { }).catch(err => res.status(500).send(err));
     }
 };
 
