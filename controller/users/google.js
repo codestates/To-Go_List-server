@@ -38,9 +38,14 @@ module.exports = {
                 email: email,
                 username: name,
                 token: token
-            }).catch(err => console.log(err));
+            })
+                .then(result => {
+                    req.session.userid = result.dataValues.id;
+                    res.status(200).json({ token, id: req.session.userid });
+                })
+                .catch(err => res.status(500).send(err));
 
-            return token;
+            // return token;
         };
 
         async function verify() {
@@ -57,18 +62,18 @@ module.exports = {
                     email: email
                 }
             }).then(result => {
-                let token = '';
+                let token;
 
                 if (result !== null) {
                     // console.log('DB에 있는 유저');
                     token = updateToken(payload);
+                    req.session.userid = result.id;
+                    res.status(200).json({ token, id: req.session.userid });
                 } else {
                     // console.log('DB에 없는 유저');
-                    token = insertUserIntoDB(payload);
+                    insertUserIntoDB(payload);
                 }
-                req.session.userid = result.id;
-                res.status(200).json({ token, id: req.session.userid });
-            }).catch(err => console.log(err));
+            }).catch(err => res.status(500).send(err));
         };
 
         verify().then(() => { }).catch(err => res.status(500).send(err));
