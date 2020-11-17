@@ -15,7 +15,7 @@ module.exports = {
                     res.status(401).send('Invalid user');
                 } else {
                     req.session.userid = result.id;
-                    res.status(200).send('success');
+                    res.status(200).json({ id: req.session.userid });
                 }
             }).catch(err => res.status(500).send(err));
         }
