@@ -3,7 +3,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.addColumn('posts', 'userid', Sequelize.INTEGER);
-    // await queryInterface.addColumn('hashtags', 'userId', Sequelize.INTEGER);
+    await queryInterface.addColumn('hashtags', 'userId', Sequelize.INTEGER);
 
     // await queryInterface.addConstraint('posts', {
     //   fields: ['userid'],
@@ -21,6 +21,6 @@ module.exports = {
   down: async (queryInterface, Sequelize) => {
     // await queryInterface.removeConstraint('posts', 'userid');
     await queryInterface.removeColumn('posts', 'userid');
-    // await queryInterface.removeColumn('hashtags', 'userId');
+    await queryInterface.removeColumn('hashtags', 'userId');
   }
 };

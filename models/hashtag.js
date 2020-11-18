@@ -14,7 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   hashtag.init({
-    tag: DataTypes.STRING
+    tag: DataTypes.STRING,
+    userId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'hashtag',
