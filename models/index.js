@@ -57,7 +57,7 @@ post_hashtag.belongsTo(hashtag, {
 });
 
 // user-hashtag associations
-// user.hasMany(hashtag);
-// hashtag.belongsTo(user);
+user.hasMany(hashtag);
+hashtag.belongsTo(user);
 
 module.exports = db;
