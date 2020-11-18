@@ -27,7 +27,8 @@ app.use(
             'http://localhost:3001',
             'http://to-go-list-client.s3-website.ap-northeast-2.amazonaws.com',
             'http://13.209.99.91:3001',
-            'https://api.unsplash.com'
+            'https://api.unsplash.com',
+            'https://togolist.ml'
         ],
         methods: ['GET', 'POST', 'PATCH'],
         credentials: true
