@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-const session = require('express-session');
+// const session = require('express-session');
+const cookieSession = require('cookie-session');
 
 const userRouter = require('./routes/users');
 const postRouter = require('./routes/posts');
@@ -11,11 +12,23 @@ const morgan = require('morgan');
 const app = express();
 const port = 3001;
 
+// app.use(
+//     session({
+//         secret: '$to-go-list-is-aWeSOmE!',
+//         resave: false,
+//         saveUninitialized: true
+//     })
+// );
+
+// app.set('trust proxy', 1);
 app.use(
-    session({
-        secret: '$to-go-list-is-aWeSOmE!',
-        resave: false,
-        saveUninitialized: true
+    cookieSession({
+        name: 'session',
+        keys: ['$to-go-list-is-aWeSOmE!'],
+        maxAge: 24 * 60 * 60 * 100,
+        secure: true,
+        httpOnly: true,
+        sameSite: 'none'
     })
 );
 
@@ -28,7 +41,8 @@ app.use(
             'http://to-go-list-client.s3-website.ap-northeast-2.amazonaws.com',
             'http://13.209.99.91:3001',
             'https://api.unsplash.com',
-            'https://togolist.ml'
+            'https://togolist.ml',
+            'https://togolist-server.ml'
         ],
         methods: ['GET', 'POST', 'PATCH'],
         credentials: true
