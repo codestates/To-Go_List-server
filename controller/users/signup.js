@@ -2,7 +2,7 @@ const { user } = require('../../models');
 
 module.exports = {
     post: (req, res) => {
-        const { email, password, username, phonenum } = req.body;
+        const { email, password, username, phonenum, birthDay } = req.body;
         user.findOrCreate({
             where: {
                 email: email
@@ -10,7 +10,8 @@ module.exports = {
             defaults: {
                 password: password,
                 username: username,
-                phonenum: phonenum
+                phonenum: phonenum,
+                birthDay: birthDay
             }
         })
             .then(async ([user, created]) => {

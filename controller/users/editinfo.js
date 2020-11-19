@@ -3,13 +3,14 @@ const { user } = require('../../models');
 module.exports = {
     patch: (req, res) => {
         const { userid } = req.session;
-        const { password, username, phonenum } = req.body;
+        const { password, username, phonenum, birthDay } = req.body;
 
         if (userid) {
             user.update({
                 username: username,
                 password: password,
-                phonenum: phonenum
+                phonenum: phonenum,
+                birthDay: birthDay
             }, {
                 where: {
                     id: userid
