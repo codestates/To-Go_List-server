@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-// const session = require('express-session');
-const cookieSession = require('cookie-session');
+const session = require('express-session');
+// const cookieSession = require('cookie-session');
 
 const userRouter = require('./routes/users');
 const postRouter = require('./routes/posts');
@@ -12,25 +12,25 @@ const morgan = require('morgan');
 const app = express();
 const port = 3001;
 
-// app.use(
-//     session({
-//         secret: '$to-go-list-is-aWeSOmE!',
-//         resave: false,
-//         saveUninitialized: true
-//     })
-// );
-
-// app.set('trust proxy', 1);
 app.use(
-    cookieSession({
-        name: 'session',
-        keys: ['$to-go-list-is-aWeSOmE!'],
-        maxAge: 24 * 60 * 60 * 100,
-        secure: true,
-        httpOnly: true,
-        sameSite: 'none'
+    session({
+        secret: '$to-go-list-is-aWeSOmE!',
+        resave: false,
+        saveUninitialized: true
     })
 );
+
+// app.set('trust proxy', 1);
+// app.use(
+//     cookieSession({
+//         name: 'session',
+//         keys: ['$to-go-list-is-aWeSOmE!'],
+//         maxAge: 24 * 60 * 60 * 100,
+//         secure: true,
+//         httpOnly: true,
+//         sameSite: 'none'
+//     })
+// );
 
 app.use(express.json());
 app.use(
