@@ -1,0 +1,43 @@
+{
+  "name": "im23project2-server",
+  "version": "1.0.0",
+  "description": "ToGoList server",
+  "main": "index.js",
+  "scripts": {
+    "migrate": "npx sequelize-cli db:migrate",
+    "undo": "npx sequelize-cli db:migrate:undo",
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docker-build": "docker build -t togo-server .",
+    "docker-run": "npm run docker-build && docker run -p 3001:3001 togo-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/astartes22/im23project2-server.git"
+  },
+  "author": "astartes22",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/astartes22/im23project2-server/issues"
+  },
+  "homepage": "https://github.com/astartes22/im23project2-server#readme",
+  "dependencies": {
+    "cookie-session": "^1.4.0",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "google-auth-library": "^6.1.3",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.2.5",
+    "pm2": "^4.5.0",
+    "sequelize": "^6.3.5"
+  },
+  "devDependencies": {
+    "eslint": "^7.13.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.6",
+    "sequelize-cli": "^6.2.0"
+  }
+}
